@@ -1,0 +1,55 @@
+const timerElement = document.getElementById('timer');
+
+const fixButton = document.getElementById('fix-button');
+
+const warningText = document.getElementById('warning-text');
+
+
+
+let timer = 5;
+
+
+
+// Countdown function
+
+const countdown = setInterval(() => {
+
+  timer--;
+
+  timerElement.textContent = timer;
+
+  if (timer <= 0) {
+
+    clearInterval(countdown);
+
+    triggerFix();
+
+  }
+
+}, 1000);
+
+
+
+// Trigger the "fix" screen
+
+function triggerFix() {
+
+  fixButton.hidden = false;
+
+  warningText.textContent = "This was a demonstration!";
+
+  document.getElementById('countdown').textContent = "Always verify QR codes!";
+
+  document.body.style.backgroundColor = "green";
+
+}
+
+
+
+// Add event listener to fix button
+
+fixButton.addEventListener('click', () => {
+
+  alert("Remember: Think before you scan!");
+
+});
